@@ -6,7 +6,7 @@ import os
 import math
 
 load_dotenv()
-CONN_STRING = os.getenv("DATABASE_URL")
+CONN_STRING = os.getenv("DATABASE_URL") or st.secrets.get("DATABASE_URL")
 PI = math.pi
 
 @st.cache_resource
