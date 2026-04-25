@@ -1,13 +1,3 @@
-import streamlit as st
-import sys, os
-sys.path.insert(0, os.path.dirname(__file__))
-
-# DEBUG TEMPORAIRE
-try:
-    st.write("SECRET:", st.secrets["DATABASE_URL"][:20], "...")
-except Exception as e:
-    st.write("ERREUR SECRET:", e)
-
 from styles import CSS
 from db import get_clients
 
