@@ -6,8 +6,14 @@ import os
 import math
 
 load_dotenv()
-CONN_STRING = os.getenv("DATABASE_URL") or st.secrets.get("DATABASE_URL")
+
+try:
+    CONN_STRING = st.secrets["DATABASE_URL"]
+except:
+    CONN_STRING = os.getenv("DATABASE_URL")
+
 PI = math.pi
+
 
 @st.cache_resource
 def get_conn():
