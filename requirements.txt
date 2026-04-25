@@ -1,0 +1,8 @@
+psycopg2-binary
+pandas
+python-dotenv
+streamlit
+plotly
+numpy
+reportlab
+kaleido
