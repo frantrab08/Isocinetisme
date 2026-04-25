@@ -3,9 +3,11 @@ import pandas as pd
 import psycopg2
 import psycopg2.extras
 
-# ── Config ────────────────────────────────────────────────────────────────────
-CONN_STRING = "postgresql://neondb_owner:npg_Yt7kQFpwu0mb@ep-wispy-field-alkap2zn-pooler.c-3.eu-central-1.aws.neon.tech/neondb?sslmode=require"
-DOSSIER     = r'C:\Users\franb\OneDrive\Documents\iso'
+from dotenv import load_dotenv
+
+load_dotenv()
+CONN_STRING = os.getenv("DATABASE_URL")
+DOSSIER     = os.getenv("DOSSIER_ISO")
 
 # ── Statut machine → texte ────────────────────────────────────────────────────
 STATUT_MAP = {
