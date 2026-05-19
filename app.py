@@ -1,3 +1,6 @@
+from styles import CSS
+from db import get_clients
+
 import streamlit as st
 import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
