@@ -16,7 +16,17 @@ def get_conn():
 @st.cache_data(ttl=300)
 def query(sql, params=None):
     conn = get_conn()
-    return pd.read_sql(sql, conn, params=params)
+    # Reconnexion si la connexion est fermée
+    if conn.closed:
+        st.cache_resource.clear()
+        conn = get_conn()
+    try:
+        return pd.read_sql(sql, conn, params=params)
+    except Exception:
+        # Forcer une nouvelle connexion en cas d'erreur
+        st.cache_resource.clear()
+        conn = get_conn()
+        return pd.read_sql(sql, conn, params=params)
 
 # ── Clients ───────────────────────────────────────────────────────────────────
 @st.cache_data(ttl=300)
